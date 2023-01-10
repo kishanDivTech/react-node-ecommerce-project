@@ -17,6 +17,7 @@ class HomeProducts {
         .gt(0)
         .skip(skip)
         .limit(parPage)
+        .populate("reviewsId")
         .sort({ updatedAt: -1 });
       return res.status(200).send({ products: response, parPage, count });
     } catch (error) {
@@ -27,6 +28,7 @@ class HomeProducts {
     .where("stock")
     .gt(0)
     .limit(4)
+    .populate("reviewsId")
     .sort({updatedAt:-1})
     return res.status(200).send({products: response})
   }
